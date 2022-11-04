@@ -26,6 +26,7 @@ def lose_game():
 
 
 while game_continue == True:
+#     Dictionaries index spans a total of 50 famous instagram accounts. Game is won when all accounts have been used.
     if score == 49:
         clear()
         print(logo)
@@ -37,23 +38,28 @@ while game_continue == True:
     print(logo)
     print("Instagram Followers Edition")
     print("\n")
+# First loop condition used to pick two random accounts when starting the game.
     if first_loop == True:
         for i in range(2):
             x = random.choice(dictionaries)
             temp_dict.append(x)
             y = dictionaries.index(x)
             del dictionaries[y]
+# Option A from previous round is removed. Option B becomes new option A and random account is picked to become new Option B.
     elif first_loop == False:
         temp_dict.pop(0)
         x = random.choice(dictionaries)
         temp_dict.append(x)
         y = dictionaries.index(x)
         del dictionaries[y]
+#         Confirmation of correct answer from previous round and score display.
         print(f"You're right! Current score: {score}.")
+#         Display information of two Instagram account holders.
     print(f"Compare A: {temp_dict[0]['name']}, {temp_dict[0]['description']}, from {temp_dict[0]['country']}.")
     print(vs)
     print(f"Against B: {temp_dict[1]['name']}, {temp_dict[1]['description']}, from {temp_dict[1]['country']}.")
     print("\n")
+#     Nested while loop to grab correct input and check if guess is correct or incorrect.
     while True:
         try:
             guess = str(input("Who has more followers? Type 'a' or 'b': ")).lower()
@@ -79,5 +85,3 @@ while game_continue == True:
         else:
             print("Invalid input. Give me your guess by typing 'a' or 'b'.")
             continue
-        
-    
